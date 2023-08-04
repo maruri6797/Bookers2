@@ -5,12 +5,38 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <script src="https://kit.fontawesome.com/a166720885.js" crossorigin="anonymous"></script>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+    <header>
+      <li>
+        <span><i class="fa-solid fa-house-chimney"></i></span>
+      </li>
+      <% if user_signed_in? %>
+        <li>
+          <span><i class="fa-solid fa-users"></i></span>
+        </li>
+        <li>
+          <span><i class="fa-solid fa-book-open"></i></span>
+        </li>
+        <li>
+          <span><i class="fa-solid fa-right-from-bracket"></i><%= link_to "Log out", destroy_user_session_path, method: :delete %></span>
+        </li>
+      <% else %>
+         <li>
+          <span><i class="fa-solid fa-link"></i></span>
+        </li>
+        <li>
+          <span><i class="fa-solid fa-user-plus"></i> <%= link_to "Sign up", new_user_registration_path %></span>
+        </li>
+        <li>
+          <span><i class="fa-solid fa-right-to-bracket"></i> <%= link_to "Log in", new_user_session_path %></span>
+        </li>
+      <% end %>
+    </header>
     <%= yield %>
   </body>
 </html>
