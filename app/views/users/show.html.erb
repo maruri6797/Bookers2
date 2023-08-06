@@ -1,0 +1,22 @@
+<h1>Books</h1>
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Opinion</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <% @books.each do |book| %>
+        <td><%= image_tag book.get_image %></td>
+        <td>
+          <%= link_to book_path(book.id) do %>
+            <%= book.title %>
+          <% end %>
+        </td>
+        <td><%= book.body %></td>
+      <% end %>
+    </tr>
+  </tbody>
+</table>

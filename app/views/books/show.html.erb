@@ -1,0 +1,14 @@
+<h1>Books detail</h1>
+
+
+<%= link_to book_path(@book) do %>
+  <%= @book.title %>
+<% end %>
+<%= @book.body %>
+
+<% if @book.user == current_user %>
+  <%= link_to "Edit", edit_book_path(@book) %>
+  <%= link_to "Destroy", book_path(@book), method: :delete %>
+<% end %>
+
+<%= @book.user.name %>

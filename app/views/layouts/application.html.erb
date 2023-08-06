@@ -5,38 +5,49 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <script src="https://kit.fontawesome.com/a166720885.js" crossorigin="anonymous"></script>
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
     <header>
-      <li>
-        <span><i class="fa-solid fa-house-chimney"></i></span>
-      </li>
-      <% if user_signed_in? %>
-        <li>
-          <span><i class="fa-solid fa-users"></i></span>
-        </li>
-        <li>
-          <span><i class="fa-solid fa-book-open"></i></span>
-        </li>
-        <li>
-          <span><i class="fa-solid fa-right-from-bracket"></i><%= link_to "Log out", destroy_user_session_path, method: :delete %></span>
-        </li>
-      <% else %>
-         <li>
-          <span><i class="fa-solid fa-link"></i></span>
-        </li>
-        <li>
-          <span><i class="fa-solid fa-user-plus"></i> <%= link_to "Sign up", new_user_registration_path %></span>
-        </li>
-        <li>
-          <span><i class="fa-solid fa-right-to-bracket"></i> <%= link_to "Log in", new_user_session_path %></span>
-        </li>
-      <% end %>
+      <h4>Bookers</h4>
+      <ul>
+        <% if user_signed_in? %>
+          <li>
+            <span><i class="fa-solid fa-house-chimney"></i></span>
+          </li>
+          <li>
+            <span><i class="fa-solid fa-users"></i></span>
+          </li>
+          <li>
+            <span><i class="fa-solid fa-book-open"></i></span>
+          </li>
+          <li>
+            <span><i class="fa-solid fa-right-from-bracket"></i><%= link_to "Log out", destroy_user_session_path, method: :delete %></span>
+          </li>
+        <% else %>
+          <li>
+            <span><i class="fa-solid fa-house-chimney"></i><%= link_to "Home", root_path %></span>
+          </li>
+          <li>
+            <span><i class="fa-solid fa-link"></i><%= link_to "About", about_path %></span>
+          </li>
+          <li>
+            <span><i class="fa-solid fa-user-plus"></i> <%= link_to "Sign up", new_user_registration_path %></span>
+          </li>
+          <li>
+            <span><i class="fa-solid fa-right-to-bracket"></i> <%= link_to "Log in", new_user_session_path %></span>
+          </li>
+        <% end %>
+      </ul>
     </header>
-    <%= yield %>
+     <%= yield %>
+    <footer>
+      <p>CopyRight Infratop.inc</p>
+    </footer>
+
   </body>
 </html>
