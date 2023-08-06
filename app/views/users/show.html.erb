@@ -1,8 +1,4 @@
-<h1>User info</h1>
-<%= image_tag @user.get_profile_image(100,100) %>
-<p>name</p><span><%= @user.name %></span>
-<p>introduction</p><span><%= @user.introduction %></span>
-<%= link_to "編集", edit_user_path(@user) %>
+<%= render 'books/side_bar', {user: @user, book: @book} %>
 
 <h1>Books</h1>
 <table>
