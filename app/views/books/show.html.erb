@@ -1,6 +1,6 @@
 <h1>Books detail</h1>
 
-
+<%= image_tag 'no_image.jpg' %>
 <%= link_to book_path(@book) do %>
   <%= @book.title %>
 <% end %>
@@ -8,7 +8,9 @@
 
 <% if @book.user == current_user %>
   <%= link_to "Edit", edit_book_path(@book) %>
-  <%= link_to "Destroy", book_path(@book), method: :delete %>
+  <%= link_to "Destroy", book_path(@book), method: :delete, "data-confirm" => "本当に消しますか？" %>
 <% end %>
 
-<%= @book.user.name %>
+<%= link_to user_path(@book.user.id) do %>
+  <%= @book.user.name %>
+<% end %>

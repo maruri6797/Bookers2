@@ -1,9 +1,11 @@
 
 <h1>User info</h1>
-<%= image_tag @book.user.get_profile_image(100,100) %>
-<p>name</p><span><%= @book.user.name %></span>
-<p>introduction</p><span><%= @book.user.introduction %></span>
-<%= link_to "編集", edit_user_path(@book.user_id) %>
+  <%= image_tag current_user.get_profile_image(100,100) %>
+  <p>name</p><span><%= current_user.name %></span>
+  <p>introduction</p><span><%= current_user.introduction %></span>
+  <%= link_to edit_user_path(current_user.id) do %>
+    <i class="fa-solid fa-user-gear"></i>
+  <% end %>
 
 <h1>New book</h1>
 <%= form_with model: @book do |f| %>
@@ -25,7 +27,7 @@
   <tbody>
     <tr>
       <% @books.each do |book| %>
-        <td><%= image_tag book.get_image %></td>
+        <td><%= image_tag 'no_image.jpg' %></td>
         <td>
           <%= link_to book_path(book.id) do %>
             <%= book.title %>
