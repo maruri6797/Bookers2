@@ -2,7 +2,14 @@
   <div class="row no-gutters">
     <div class="col-md-5 col-sm-10 mx-auto">
       <h1>Editing Book</h1>
-
+      <% if @book.errors.any? %>
+        <%= pluralize(@book.errors.count, "error") %> prohibited this obj from being saved:
+        <ul>
+          <% @book.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      <% end %>
       <%= form_with model: @book do |f| %>
         <p>Title</p>
         <%= f.text_field :title %>
@@ -13,7 +20,7 @@
         </div>
       <% end %>
       <div class="mt-3">
-        <span><%= link_to 'Show', book_path(@book) %> | </span><span><%= link_to 'Back', book_path %></span>
+        <span><%= link_to 'Show', book_path(@book) %> | </span><span><%= link_to 'Back', books_path %></span>
       </div>
     </div>
   </div>

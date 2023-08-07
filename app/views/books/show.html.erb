@@ -4,9 +4,10 @@
       <%= render 'side_bar', {user: @user, book: Book.new} %>
     </div>
     <div class="col-md-8 offset-md-1 mx-2">
-      <h1>Books detail</h1>
-
-      <%= image_tag 'no_image.jpg' %>
+      <h1>Book detail</h1>
+      <%= link_to user_path(@user) do %>
+          <%= image_tag @user.get_profile_image(100,100) %>
+      <% end %>
       <%= link_to book_path(@book), class: 'm-2' do %>
         <%= @book.title %>
       <% end %>
