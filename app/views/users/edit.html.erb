@@ -1,20 +1,28 @@
-<h1>User info</h1>
+<div class="container">
+  <div class="row no-gutters">
+    <div class="col-md-5 col-sm-10 mx-auto">
+      <h1>User info</h1>
 
-<% if @user.errors.any? %>
-  <%= pluralize(@user.errors.count, "error") %> prohibited this obj from being saved:
-  <ul>
-    <% @user.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
-    <% end %>
-  </ul>
-<% end %>
+      <% if @user.errors.any? %>
+        <%= pluralize(@user.errors.count, "error") %> prohibited this obj from being saved:
+        <ul>
+          <% @user.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      <% end %>
 
-<%= form_with model: @user do |f| %>
-  <p>Name</p>
-  <%= f.text_field :name %>
-  <p>Image</p>
-  <%= f.file_field :profile_image, placeholder: "プロフィール画像", accept: "image/*" %>
-  <p>Introduction</p>
-  <%= f.text_area :introduction %>
-  <%= f.submit 'Update User' %>
-<% end %>
+      <%= form_with model: @user do |f| %>
+        <p>Name</p>
+        <%= f.text_field :name %>
+        <p>Image</p>
+        <%= f.file_field :profile_image, placeholder: "プロフィール画像", accept: "image/*" %>
+        <p>Introduction</p>
+        <%= f.text_area :introduction %>
+        <div class="actions">
+          <%= f.submit 'Update User', class: 'btn btn-secondary' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

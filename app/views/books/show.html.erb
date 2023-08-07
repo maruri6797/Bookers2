@@ -1,18 +1,26 @@
-<%= render 'side_bar', {user: @user, book: Book.new} %>
+<div class="container">
+  <div class="row no-gutters">
+    <div class="col-md-3 col-sm-8 mx-2">
+      <%= render 'side_bar', {user: @user, book: Book.new} %>
+    </div>
+    <div class="col-md-8 col-sm-8 mx-2">
+      <h1>Books detail</h1>
 
-<h1>Books detail</h1>
+      <%= image_tag 'no_image.jpg' %>
+      <%= link_to book_path(@book), class: 'm-2' do %>
+        <%= @book.title %>
+      <% end %>
+      <%= @book.body %>
 
-<%= image_tag 'no_image.jpg' %>
-<%= link_to book_path(@book) do %>
-  <%= @book.title %>
-<% end %>
-<%= @book.body %>
-
-<% if @book.user == current_user %>
-  <%= link_to "Edit", edit_book_path(@book) %>
-  <%= link_to "Destroy", book_path(@book), method: :delete, "data-confirm" => "本当に消しますか？" %>
-<% end %>
-
-<%= link_to user_path(@book.user.id) do %>
-  <%= @book.user.name %>
-<% end %>
+      <% if @book.user == current_user %>
+        <%= link_to "Edit", edit_book_path(@book), class: 'btn btn-success m-2' %>
+        <%= link_to "Destroy", book_path(@book), method: :delete, "data-confirm" => "本当に消しますか？", class: 'btn btn-danger' %>
+      <% end %>
+      <div>
+        <%= link_to user_path(@book.user.id) do %>
+          <%= @book.user.name %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

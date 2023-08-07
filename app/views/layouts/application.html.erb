@@ -15,7 +15,7 @@
     <header>
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark text-white">
         <div class="container">
-          <h4 class="navbar-brand p-3"><%= link_to "Bookers", root_path, class: 'nav-link text-light' %></h4>
+          <h4 class="navbar-brand"><%= link_to "Bookers", root_path, class: 'nav-link text-light' %></h4>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -71,12 +71,10 @@
     </header>
     <main>
       <p class="notice"><%= notice %>
-
-      <p class="alert"><%= alert %>
      <%= yield %>
     </main>
     <footer>
-      <p>CopyRight Infratop.inc</p>
+      <p class="text-center p-4">CopyRight Infratop.inc</p>
     </footer>
 
   </body>

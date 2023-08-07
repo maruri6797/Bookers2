@@ -1,24 +1,32 @@
-<%= render 'books/side_bar', {user: @user, book: @book} %>
-
-<h1>Books</h1>
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Opinion</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <% @books.each do |book| %>
-        <td><%= image_tag 'no_image.jpg' %></td>
-        <td>
-          <%= link_to book_path(book.id) do %>
-            <%= book.title %>
+<div class="container">
+  <div class="row no-gutters">
+    <div class="col-md-3 col-sm-8 mx-2">
+      <%= render 'books/side_bar', {user: @user, book: @book} %>
+    </div>
+    <div class="col-md-8 col-sm-8 mx-2">
+      <h1>Books</h1>
+      <table class="table">
+        <thead>
+          <tr>
+            <th class="col-2"></th>
+            <th class="col-3">Title</th>
+            <th class="col-5">Opinion</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @books.each do |book| %>
+          <tr>
+            <td><%= image_tag 'no_image.jpg' %></td>
+            <td>
+              <%= link_to book_path(book.id) do %>
+                <%= book.title %>
+              <% end %>
+            </td>
+            <td><%= book.body %></td>
+          </tr>
           <% end %>
-        </td>
-        <td><%= book.body %></td>
-      <% end %>
-    </tr>
-  </tbody>
-</table>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
