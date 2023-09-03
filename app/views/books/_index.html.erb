@@ -2,9 +2,12 @@
 <table class="table">
   <thead>
     <tr>
-      <th class="col-2"></th>
-      <th class="col-3">Title</th>
-      <th class="col-5">Opinion</th>
+      <th></th>
+      <th>Title</th>
+      <th>Opinion</th>
+      <th></th>
+      <th></th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
@@ -21,6 +24,8 @@
         <% end %>
       </td>
       <td><%= book.body %></td>
+      <td class="favorite-btn<%= book.id %>"><%= render 'favorites/favorite_btn', book: book %></td>
+      <td class="count"><%= render 'book_comments/count', book: book %></td>
     </tr>
     <% end %>
   </tbody>
