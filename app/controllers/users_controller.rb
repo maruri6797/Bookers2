@@ -1,5 +1,15 @@
 class UsersController < ApplicationController
   before_action :is_matching_login_user, only: [:edit, :update]
+  
+  def follows
+    user = User.find(params[:id])
+    @users = user.followers
+  end
+  
+  def followers
+    user = User.find(params[:id])
+    @users = user.followeds
+  end
 
   def index
     @users = User.all

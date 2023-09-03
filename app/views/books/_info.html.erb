@@ -3,7 +3,17 @@
   <table class="table">
     <tr><th>name</th><td><%= user.name %></td></tr>
     <tr><th>introduction</th><td><%= user.introduction %></td></tr>
+    <tr><th>follows</th><td><%= link_to user.relationships.count, follows_user_path(user) %></td></tr>
+    <tr><th>followers</th><td><%= link_to user.reverse_of_relationships.count, followers_user_path(user) %></td></tr>
   </table>
-    <%= link_to edit_user_path(user.id), class: 'btn btn-outline-secondary w-75 text-secondary' do %>
+  <% if current_user != user %>
+    <% if current_user.following?(user) %>
+      <%= link_to "フォロー外す", user_relationships_path(user), method: :delete, class: 'btn btn-danger' %>
+    <% else %>
+      <%= link_to "フォローする", user_relationships_path(user), method: :post, class: 'btn btn-success' %>
+    <% end %>
+  <% else %>
+    <%= link_to edit_user_path(user.id), class: 'btn btn-outline-secondary w-100 text-secondary' do %>
       <i class="fas fa-user-cog"></i>
     <% end %>
+  <% end %>
