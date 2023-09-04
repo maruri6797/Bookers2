@@ -12,6 +12,9 @@
     <% else %>
       <%= link_to "フォローする", user_relationships_path(user), method: :post, class: 'btn btn-success' %>
     <% end %>
+    <% if current_user.following?(user) && user.following?(current_user) %>
+      <%= link_to 'chatを始める', message_path(user.id), class: "ml-3" %>
+    <% end %>
   <% else %>
     <%= link_to edit_user_path(user.id), class: 'btn btn-outline-secondary w-100 text-secondary' do %>
       <i class="fas fa-user-cog"></i>

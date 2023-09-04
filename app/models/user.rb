@@ -6,6 +6,9 @@ class User < ApplicationRecord
   has_many :books, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :book_comments, dependent: :destroy
+  has_many :messages, dependent: :destroy
+  has_many :user_rooms, dependent: :destroy
+  has_many :rooms, through: :user_rooms
 
   has_many :relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
   has_many :followers, through: :relationships, source: :followed
@@ -37,7 +40,7 @@ class User < ApplicationRecord
   def following?(user)
     followers.include?(user)
   end
-  
+
   def self.looks(search, word)
     if search == "perfect_match"
       @user = User.where("name LIKE?", "#{word}")
