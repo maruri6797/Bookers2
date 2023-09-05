@@ -1,11 +1,22 @@
 class UsersController < ApplicationController
   before_action :is_matching_login_user, only: [:edit, :update]
-  
+
+  def search
+    @user = User.find(params[:user_id])
+    @books = @user.books
+    if params[:created_at] == ""
+      @search_book = "日付を選択してください"
+    else
+      create_at = params[:created_at]
+      @search_book = @books.where(['created_at LIKE?', "#{create_at}%"]).count
+    end
+  end
+
   def follows
     user = User.find(params[:id])
     @users = user.followers
   end
-  
+
   def followers
     user = User.find(params[:id])
     @users = user.followeds
