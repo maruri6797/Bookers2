@@ -14,7 +14,7 @@
           <%= f.submit "検索", class: 'btn btn-primary' %>
         <% end %>
       </div>
-      
+
       <div id="search_result">
         <% if @search_book.present? %>
           <%= render 'users/search', search_book: @search_book %>
@@ -116,17 +116,19 @@
             }],
           },
           options: {
-            title: {
-              display: true,
-              text: '7日間の投稿数の比較'
+            plugins: {
+              title: {
+                display: true,
+                text: '7日間の投稿数の比較'
+              },
             },
-            scales: {
-              y: {
-                suggestedMin: 0,
-                suggestedMax: 10,
-                stepSize: 1
-              }
-            },
+              scales: {
+                y: {
+                  suggestedMin: 0,
+                  suggestedMax: 10,
+                  stepSize: 1
+                }
+              },
           },
         });
         });
